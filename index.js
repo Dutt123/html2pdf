@@ -12,7 +12,7 @@ const port=process.env.PORT||8080;
 
 app.get("/", async (req, res) => {
     const browser = await puppeteer.launch({ headless: true ,
-        args: ["--no-sandbox"]})
+        args: ["--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]})
     const page = await browser.newPage()
     await page.setContent(content);
     const pdf = await page.pdf({
